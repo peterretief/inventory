@@ -1,0 +1,61 @@
+
+
+{% load staticfiles %}
+<script src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+<script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax-plugin.min.js' %}"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet" media="screen">
+    <link rel="stylesheet"  media="screen" href="{% static 'css/base.css' %}">
+<title>innMate</title>
+</head>
+
+    <body>
+
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <img  src="/static/img/icon.jpg" class="img-rounded" alt="inventory" width="64" height="66">
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/"><b>Inventory</b></a></li>
+
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+        </div>
+      </nav>
+
+      <div class="row">
+
+          <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+              <p>
+              {% block header %}
+              {% endblock %}
+             </p>
+              <p>
+                {% block content %}
+
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% endblock %}
+              </p>
+            </div>
+      </div>
+
+      <script src="{% static 'bootstrap/js/jquery.js' %}"></script>
+      <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
